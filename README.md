@@ -1,4 +1,5 @@
 # Semi-supervised Meta-learning with Disentanglement for Domain-generalised Medical Image Segmentation
+![model](figures/model.png)
 
 This repository contains the official implementation of Semi-supervised Meta-learning with Disentanglement for Domain-generalised Medical Image Segmentation.
 
