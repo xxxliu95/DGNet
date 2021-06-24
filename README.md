@@ -11,8 +11,12 @@ The repository is created by [Xiao Liu](https://github.com/xxxliu95), [Spyridon 
 * SciPy 1.5.2 or higher
 * CUDA toolkit 10 or newer
 
+# Qualitative results
+![results](figure/results.png)
+
 # Citation
 TBD
+
 
 
 # License
