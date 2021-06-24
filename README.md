@@ -10,6 +10,11 @@ The repository is created by [Xiao Liu](https://github.com/xxxliu95), [Spyridon 
 * Python 3.7.2 or higher
 * SciPy 1.5.2 or higher
 * CUDA toolkit 10 or newer
+* Nibabel
+* Pillow
+* Scikit-image
+* TensorBoard
+* Tqdm
 
 # Qualitative results
 ![results](figure/result.png)
