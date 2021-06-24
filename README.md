@@ -12,7 +12,7 @@ The repository is created by [Xiao Liu](https://github.com/xxxliu95), [Spyridon 
 * CUDA toolkit 10 or newer
 
 # Qualitative results
-![results](figure/results.png)
+![results](figure/result.png)
 
 # Citation
 TBD
