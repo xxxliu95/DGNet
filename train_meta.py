@@ -20,8 +20,8 @@ import time
 
 def get_args():
     usage_text = (
-        "SNet Pytorch Implementation"
-        "Usage:  python train.py [options],"
+        "DGNet Pytorch Implementation"
+        "Usage:  python train_meta.py [options],"
         "   with [options]:"
     )
     parser = argparse.ArgumentParser(description=usage_text)
