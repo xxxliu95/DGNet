@@ -44,31 +44,31 @@ def get_args():
 
     return parser.parse_args()
 
-# python train_meta.py -e 300 -c cp_dgnet_meta_100_tvA/ -t A -w DGNetRE_COM_META_100_tvA -g 0
-# python train_meta.py -e 300 -c cp_dgnet_meta_100_tvB/ -t B -w DGNetRE_COM_META_100_tvB -g 1
-# python train_meta.py -e 300 -c cp_dgnet_meta_100_tvC/ -t C -w DGNetRE_COM_META_100_tvC -g 2
-# python train_meta.py -e 300 -c cp_dgnet_meta_100_tvD/ -t D -w DGNetRE_COM_META_100_tvD -g 3
+# python train_meta.py -e 80 -c cp_dgnet_meta_100_tvA/ -t A -w DGNetRE_COM_META_100_tvA -g 0
+# python train_meta.py -e 80 -c cp_dgnet_meta_100_tvB/ -t B -w DGNetRE_COM_META_100_tvB -g 1
+# python train_meta.py -e 80 -c cp_dgnet_meta_100_tvC/ -t C -w DGNetRE_COM_META_100_tvC -g 2
+# python train_meta.py -e 80 -c cp_dgnet_meta_100_tvD/ -t D -w DGNetRE_COM_META_100_tvD -g 3
 # k_un = 1
-# k1 = 1
-# k2 = 1
+# k1 = 20
+# k2 = 2
 # opt_patience = 4
 
-# python train_meta.py -e 400 -c cp_dgnet_meta_50_tvA/ -t A -w DGNetRE_COM_META_50_tvA -g 0
-# python train_meta.py -e 400 -c cp_dgnet_meta_50_tvB/ -t B -w DGNetRE_COM_META_50_tvB -g 1
-# python train_meta.py -e 400 -c cp_dgnet_meta_50_tvC/ -t C -w DGNetRE_COM_META_50_tvC -g 2
-# python train_meta.py -e 400 -c cp_dgnet_meta_50_tvD/ -t D -w DGNetRE_COM_META_50_tvD -g 3
+# python train_meta.py -e 100 -c cp_dgnet_meta_50_tvA/ -t A -w DGNetRE_COM_META_50_tvA -g 0
+# python train_meta.py -e 100 -c cp_dgnet_meta_50_tvB/ -t B -w DGNetRE_COM_META_50_tvB -g 1
+# python train_meta.py -e 100 -c cp_dgnet_meta_50_tvC/ -t C -w DGNetRE_COM_META_50_tvC -g 2
+# python train_meta.py -e 100 -c cp_dgnet_meta_50_tvD/ -t D -w DGNetRE_COM_META_50_tvD -g 3
 # k_un = 1
-# k1 = 1
-# k2 = 1
+# k1 = 20
+# k2 = 3
 # opt_patience = 4
 
-# python train_meta.py -e 500 -c cp_dgnet_meta_20_tvA/ -t A -w DGNetRE_COM_META_20_tvA -g 0
-# python train_meta.py -e 500 -c cp_dgnet_meta_20_tvB/ -t B -w DGNetRE_COM_META_20_tvB -g 1
-# python train_meta.py -e 500 -c cp_dgnet_meta_20_tvC/ -t C -w DGNetRE_COM_META_20_tvC -g 2
-# python train_meta.py -e 500 -c cp_dgnet_meta_20_tvD/ -t D -w DGNetRE_COM_META_20_tvD -g 3
+# python train_meta.py -e 120 -c cp_dgnet_meta_20_tvA/ -t A -w DGNetRE_COM_META_20_tvA -g 0
+# python train_meta.py -e 120 -c cp_dgnet_meta_20_tvB/ -t B -w DGNetRE_COM_META_20_tvB -g 1
+# python train_meta.py -e 120 -c cp_dgnet_meta_20_tvC/ -t C -w DGNetRE_COM_META_20_tvC -g 2
+# python train_meta.py -e 120 -c cp_dgnet_meta_20_tvD/ -t D -w DGNetRE_COM_META_20_tvD -g 3
 # k_un = 1
-# k1 = 80
-# k2 = 15
+# k1 = 30
+# k2 = 3
 # opt_patience = 4
 
 # python train_meta.py -e 150 -c cp_dgnet_meta_5_tvA/ -t A -w DGNetRE_COM_META_5_tvA -g 0
