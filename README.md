@@ -25,5 +25,8 @@ Generalising deep models to new data from new centres (termed here domains) rema
 # Citation
 TBA
 
+# Acknowlegement
+Part of the code is based on [SDNet](https://github.com/spthermo/SDNet), [MLDG](https://github.com/HAHA-DL/MLDG), [medical-mldg-seg](https://github.com/Pulkit-Khandelwal/medical-mldg-seg) and [Pytorch-UNet](https://github.com/milesial/Pytorch-UNet).
+
 # License
 All scripts are released under the MIT License.
