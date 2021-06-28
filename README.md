@@ -27,7 +27,13 @@ Cardiac Image Segmentation Challenge (M&Ms) datast](https://www.ub.edu/mnms/) an
 ![results](figures/result.png)
 
 # Citation
-TBA
+@inproceedings{liu2021semi,
+  title={Semi-supervised Meta-learning with Disentanglement for Domain-generalised Medical Image Segmentation},
+  author={Liu, Xiao and Thermos, Spyridon and O'Neil, Alison and Tsaftaris, Sotirios A},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  year={2021},
+  organization={Springer}
+}
 
 # Acknowlegement
 Part of the code is based on [SDNet](https://github.com/spthermo/SDNet), [MLDG](https://github.com/HAHA-DL/MLDG), [medical-mldg-seg](https://github.com/Pulkit-Khandelwal/medical-mldg-seg) and [Pytorch-UNet](https://github.com/milesial/Pytorch-UNet).
