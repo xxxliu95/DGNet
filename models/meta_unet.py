@@ -7,12 +7,8 @@ import torch.nn.functional as F
 from models.ops import *
 
 class ConvD(nn.Module):
-    def __init__(self, inplanes, planes, meta_loss, meta_step_size, stop_gradient, norm='in', first=False):
+    def __init__(self, inplanes, planes, norm='in', first=False):
         super(ConvD, self).__init__()
-
-        self.meta_loss = meta_loss
-        self.meta_step_size = meta_step_size
-        self.stop_gradient = stop_gradient
 
         self.first = first
 
@@ -25,7 +21,11 @@ class ConvD(nn.Module):
         self.conv3 = nn.Conv2d(planes, planes, 3, 1, 1, bias=True)
         self.in3   = normalization(planes, norm)
 
-    def forward(self, x):
+    def forward(self, x, meta_loss, meta_step_size, stop_gradient,):
+
+        self.meta_loss = meta_loss
+        self.meta_step_size = meta_step_size
+        self.stop_gradient = stop_gradient
 
         if not self.first:
             x = maxpool2D(x, kernel_size=2)
@@ -47,12 +47,8 @@ class ConvD(nn.Module):
         return z
 
 class ConvU(nn.Module):
-    def __init__(self, planes, meta_loss, meta_step_size, stop_gradient, norm='in', first=False):
+    def __init__(self, planes, norm='in', first=False):
         super(ConvU, self).__init__()
-
-        self.meta_loss = meta_loss
-        self.meta_step_size = meta_step_size
-        self.stop_gradient = stop_gradient
 
         self.first = first
         if not self.first:
@@ -65,7 +61,12 @@ class ConvU(nn.Module):
         self.conv3 = nn.Conv2d(planes, planes, 3, 1, 1, bias=True)
         self.in3   = normalization(planes, norm)
 
-    def forward(self, x, prev):
+    def forward(self, x, prev, meta_loss, meta_step_size, stop_gradient,):
+
+        self.meta_loss = meta_loss
+        self.meta_step_size = meta_step_size
+        self.stop_gradient = stop_gradient
+
         #layer 1 conv, in, lrelu
         if not self.first:
             x = conv2d(x, self.conv1.weight, self.conv1.bias, stride=1, padding=1, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size, stop_gradient=self.stop_gradient)
@@ -92,20 +93,16 @@ class UNet(nn.Module):
     def __init__(self, c, n, num_classes, norm='in'):
         super(UNet, self).__init__()
 
-        meta_loss = None
-        meta_step_size = 0.01
-        stop_gradient = False
+        self.convd1 = ConvD(c,     n, norm, first=True)
+        self.convd2 = ConvD(n,   2*n, norm)
+        self.convd3 = ConvD(2*n, 4*n, norm)
+        self.convd4 = ConvD(4*n, 8*n, norm)
+        self.convd5 = ConvD(8*n,16*n, norm)
 
-        self.convd1 = ConvD(c,     n, meta_loss, meta_step_size, stop_gradient, norm, first=True)
-        self.convd2 = ConvD(n,   2*n, meta_loss, meta_step_size, stop_gradient, norm)
-        self.convd3 = ConvD(2*n, 4*n, meta_loss, meta_step_size, stop_gradient, norm)
-        self.convd4 = ConvD(4*n, 8*n, meta_loss, meta_step_size, stop_gradient, norm)
-        self.convd5 = ConvD(8*n,16*n, meta_loss, meta_step_size, stop_gradient, norm)
-
-        self.convu4 = ConvU(16*n, meta_loss, meta_step_size, stop_gradient, norm, first=True)
-        self.convu3 = ConvU(8*n, meta_loss, meta_step_size, stop_gradient, norm)
-        self.convu2 = ConvU(4*n, meta_loss, meta_step_size, stop_gradient, norm)
-        self.convu1 = ConvU(2*n, meta_loss, meta_step_size, stop_gradient, norm)
+        self.convu4 = ConvU(16*n, norm, first=True)
+        self.convu3 = ConvU(8*n, norm)
+        self.convu2 = ConvU(4*n, norm)
+        self.convu1 = ConvU(2*n, norm)
 
         self.seg1 = nn.Conv2d(2*n, num_classes, 1)
 
@@ -114,16 +111,25 @@ class UNet(nn.Module):
         self.meta_step_size = meta_step_size
         self.stop_gradient = stop_gradient
 
-        x1 = self.convd1(x)
-        x2 = self.convd2(x1)
-        x3 = self.convd3(x2)
-        x4 = self.convd4(x3)
-        x5 = self.convd5(x4)
+        x1 = self.convd1(x, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        x2 = self.convd2(x1, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        x3 = self.convd3(x2, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        x4 = self.convd4(x3, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        x5 = self.convd5(x4, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
 
-        y4 = self.convu4(x5, x4)
-        y3 = self.convu3(y4, x3)
-        y2 = self.convu2(y3, x2)
-        y1 = self.convu1(y2, x1)
+        y4 = self.convu4(x5, x4, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        y3 = self.convu3(y4, x3, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        y2 = self.convu2(y3, x2, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
+        y1 = self.convu1(y2, x1, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size,
+                         stop_gradient=self.stop_gradient)
 
         y1 = conv2d(y1, self.seg1.weight, self.seg1.bias, meta_loss=self.meta_loss, meta_step_size=self.meta_step_size, stop_gradient=self.stop_gradient, kernel_size=None, stride=1, padding=0)
 
