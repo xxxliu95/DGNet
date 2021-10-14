@@ -32,7 +32,12 @@ k_un = 1
 k1 = 20
 k2 = 2
 ```
-The first parameter controls how many interations you want the model to be trained with unlabaled data for every interation of training. ```k1 = 20``` means the learning rate will start to decay after 20 epochs and ```k2 = 2``` means it will check if decay learning every 2 epochs.
+The first parameter controls how many interations you want the model to be trained with unlabaled data for every interation of training. ```k1 = 20``` means the learning rate will start to decay after 20 epochs and ```k2 = 2``` means it will check if decay learning every 2 epochs. 
+
+Then, run:
+```
+python train_meta.py -e 80 -c cp_dgnet_meta_100_tvA/ -t A -w DGNetRE_COM_META_100_tvA -g 0
+```
 
 # Datasets
 We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
