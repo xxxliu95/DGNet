@@ -32,6 +32,7 @@ k_un = 1
 k1 = 20
 k2 = 2
 ```
+The first parameter controls how many interations you want the model to be trained with unlabaled data for every interation of training. ```k1 = 20``` means the learning rate will start to decay after 20 epochs and ```k2 = 2``` means it will check if decay learning every 2 epochs.
 
 # Datasets
 We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
