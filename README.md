@@ -24,7 +24,7 @@ Note that the hyperparameters in the current version are tuned for BCD to A case
 ```
 python train_meta.py -e 150 -c cp_dgnet_meta_5_tvA/ -t A -w DGNetRE_COM_META_5_tvA -g 0
 ```
-Here the defualt learning rate is 4e-5. You can change the learning rate by adding '''-lr 0.00002'''.
+Here the defualt learning rate is 4e-5. You can change the learning rate by adding ```-lr 0.00002```.
 
 # Datasets
 We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
