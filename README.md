@@ -26,6 +26,13 @@ python train_meta.py -e 150 -c cp_dgnet_meta_5_tvA/ -t A -w DGNetRE_COM_META_5_t
 ```
 Here the defualt learning rate is 4e-5. You can change the learning rate by adding ```-lr xxx```.
 
+To train the model with 100% labeled data, try to change the training parameters to:
+``` 
+k_un = 1
+k1 = 20
+k2 = 2
+```
+
 # Datasets
 We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
 Cardiac Image Segmentation Challenge (M&Ms) datast](https://www.ub.edu/mnms/) and [Spinal cord grey matter segmentation challenge dataset](http://niftyweb.cs.ucl.ac.uk/challenge/index.php). The dataloader in this repo is only for M&Ms dataset.
