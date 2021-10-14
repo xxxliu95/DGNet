@@ -38,6 +38,14 @@ Then, run:
 ```
 python train_meta.py -e 80 -c cp_dgnet_meta_100_tvA/ -t A -w DGNetRE_COM_META_100_tvA -g 0
 ```
+Finally, when train the model, changing the ```resampling_rate=1.2``` (line 47) in ```mms_dataloader_meta_split.py``` to 1.1 - 1.3 may cause better results. This will change the rescale ratio when preprocess the images.
+
+# Inference
+After training, you can test the model:
+```
+python inference.py -bs 1 -c cp_dgnet_meta_100_tvA/ -t A -g 0
+```
+Similarly, changing the ```resampling_rate=1.2``` (line 47) in ```mms_dataloader_meta_split_test.py``` to 1.1 - 1.3 may cause better results.
 
 # Datasets
 We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
