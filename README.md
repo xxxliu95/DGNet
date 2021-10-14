@@ -24,7 +24,7 @@ Note that the hyperparameters in the current version are tuned for BCD to A case
 ```
 python train_meta.py -e 150 -c cp_dgnet_meta_5_tvA/ -t A -w DGNetRE_COM_META_5_tvA -g 0
 ```
-Here the defualt learning rate is 4e-5. You can change the learning rate by adding ```-lr xxx```.
+Here the defualt learning rate is 4e-5. You can change the learning rate by adding ```-lr 0.00002``` (sometimes this is better). 
 
 To train the model with 100% labeled data, try to change the training parameters to:
 ``` 
@@ -33,6 +33,8 @@ k1 = 20
 k2 = 2
 ```
 The first parameter controls how many interations you want the model to be trained with unlabaled data for every interation of training. ```k1 = 20``` means the learning rate will start to decay after 20 epochs and ```k2 = 2``` means it will check if decay learning every 2 epochs. 
+
+Also, change the ratio ```k=0.05``` (line 221) to ```k=1``` in ```mms_dataloader_meta_split.py```.
 
 Then, run:
 ```
