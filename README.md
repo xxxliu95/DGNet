@@ -16,6 +16,11 @@ The repository is created by [Xiao Liu](https://github.com/xxxliu95), [Spyridon 
 * TensorBoard
 * Tqdm
 
+
+# Datasets
+We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
+Cardiac Image Segmentation Challenge (M&Ms) datast](https://www.ub.edu/mnms/) and [Spinal cord grey matter segmentation challenge dataset](http://niftyweb.cs.ucl.ac.uk/challenge/index.php). The dataloader in this repo is only for M&Ms dataset.
+
 # Preprocessing
 
 You need to first change the dirs in the scripts of preprocess folder. Download the M&Ms data and run ```split_MNMS_data.py``` to split the original dataset into different domains. Then run ```save_MNMS_2D.py``` to save the original 4D data as 2D numpy arrays. Finally, run ```save_MNMS_re.py``` to save the resolution of each datum. 
@@ -49,10 +54,6 @@ After training, you can test the model:
 python inference.py -bs 1 -c cp_dgnet_meta_100_tvA/ -t A -g 0
 ```
 This will output the DICE and Hausdorff results as well as the standard deviation. Similarly, changing the ```resampling_rate=1.2``` (line 47) in ```mms_dataloader_meta_split_test.py``` to 1.1 - 1.3 may cause better results.
-
-# Datasets
-We used two datasets in the paper: [Multi-Centre, Multi-Vendor & Multi-Disease
-Cardiac Image Segmentation Challenge (M&Ms) datast](https://www.ub.edu/mnms/) and [Spinal cord grey matter segmentation challenge dataset](http://niftyweb.cs.ucl.ac.uk/challenge/index.php). The dataloader in this repo is only for M&Ms dataset.
 
 # Qualitative results
 ![results](figures/result.png)
